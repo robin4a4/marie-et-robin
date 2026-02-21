@@ -1,0 +1,24 @@
+---
+interface Props {
+	title?: string;
+	wide?: boolean;
+	intro?: boolean;
+	class?: string;
+}
+
+const { title, wide = false, intro = false, class: className = "" } = Astro.props as Props;
+const classes = ["panel", wide && "wide", intro && "intro", className].filter(Boolean).join(" ");
+---
+
+<section class={classes}>
+	{title && <h2 class="card-title">{title}</h2>}
+	<slot />
+</section>
+
+<style>
+	.card-title {
+		margin: 0 0 0.8rem;
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+</style>

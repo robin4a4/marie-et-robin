@@ -1,5 +1,13 @@
 ---
+import Card from "../components/Card.astro";
+import Timeline from "../components/Timeline.astro";
 
+const timelineItems = [
+	{ date: "14 h 30", label: "Cérémonie religieuse" },
+	{ date: "17 h 30", label: "Début du cocktail" },
+	{ date: "18 h 30", label: "Concert live" },
+	{ date: "20 h 00", label: "Dîner" }
+];
 ---
 
 <html lang="fr">
@@ -27,64 +35,87 @@
 				<p class="hero-date">Samedi 9 mai 2026</p>
 			</header>
 
-			<section class="panel intro">
+			<Card intro>
 				<p>
 					Nous sommes heureux de vous inviter à célébrer notre mariage et de partager avec vous
 					cette belle journée.
 				</p>
-			</section>
+			</Card>
 
-			<section class="panel">
-				<h2>Cérémonie religieuse</h2>
+			<Card title="Cérémonie religieuse">
 				<p class="lead">14 h 30 - Église Saint-Melaine</p>
 				<p>Moëlan-sur-Mer</p>
-			</section>
+			</Card>
 
-			<section class="panel">
-				<h2>Reception</h2>
+			<Card title="Réception">
 				<p class="lead">À partir de 17 h 30 - Manoir de Kerangosker</p>
 				<p>Rue du Hénan, Kerangosker, 29930 Pont-Aven</p>
-			</section>
+			</Card>
 
-			<section class="panel wide">
-				<h2>Programme du samedi 9 mai</h2>
-				<div class="timeline">
-					<div class="timeline-item">
-						<span class="time">14 h 30</span>
-						<span class="event">Cérémonie à l'église</span>
-					</div>
-					<div class="timeline-item">
-						<span class="time">17 h 30</span>
-						<span class="event">Cocktail au manoir</span>
-					</div>
-					<div class="timeline-item">
-						<span class="time">20 h 00</span>
-						<span class="event">Diner</span>
+			<Card title="Déroulement de la journée" wide>
+				<Timeline items={timelineItems} />
+			</Card>
+
+			<Card title="Brunch du dimanche 10 mai" wide>
+				<p class="lead">À partir de 11 h 00 - Manoir de Kerangosker</p>
+			</Card>
+
+			<Card title="Liste de mariage" wide>
+				<div class="gift-list">
+					<p>
+						Pour celles et ceux qui le souhaitent,
+						nous avons organisé une liste de mariage dans les boutiques présentées ci-dessous.
+            Il suffit de leur envoyer un mail avec les éléments que vous souhaitez acheter et ils enregistreront votre demande.
+					</p>
+					<p>
+						Une <strong>gagnotte</strong> sera également mise à disposition pendant le mariage.
+					</p>
+					<div class="shop-grid">
+						<article class="shop-card">
+							<h3>Degrenne</h3>
+							<p>45 Rue Saint-Placide, 75006 Paris</p>
+							<p><a href="tel:+33142799818">01 42 79 98 18</a></p>
+							<p><a href="mailto:boutique.stplacide@degrenne.fr">boutique.stplacide@degrenne.fr</a></p>
+							<details class="shop-accordion">
+								<summary>Voir les éléments de la liste</summary>
+								<ul>
+									<li>Service d'assiettes plates et creuses</li>
+									<li>Set de couverts 24 pièces</li>
+									<li>Verres à eau et verres à vin</li>
+									<li>Plat de service en céramique</li>
+								</ul>
+							</details>
+						</article>
+						<article class="shop-card">
+							<h3>Villeroy & Boch</h3>
+							<p>21 Rue Royale, 75008 Paris</p>
+							<p><a href="tel:+33142658184">01 42 65 81 84</a></p>
+							<p>
+								Contact boutique :
+								<a href="mailto:vb.rue-royale@villeroy-boch.com">vb.rue-royale@villeroy-boch.com</a>
+							</p>
+							<details class="shop-accordion">
+								<summary>Voir les éléments de la liste</summary>
+								<ul>
+									<li>Assiettes dessert et assiettes présentation</li>
+									<li>Ménagère de couverts modernes</li>
+									<li>Flûtes et verres de dégustation</li>
+									<li>Vase et pièces décoratives de table</li>
+								</ul>
+							</details>
+						</article>
 					</div>
 				</div>
-			</section>
+			</Card>
 
-			<section class="panel wide">
-				<h2>Brunch du dimanche 10 mai</h2>
-				<p class="lead">À partir de 11 h 00 - Manoir de Kerangosker</p>
-				<p>Les festivités se prolongent le lendemain dans une ambiance plus décontractée.</p>
-			</section>
-
-			<section class="panel">
-				<h2>RSVP</h2>
-				<p>Merci de nous répondre avant le <strong>1er mars 2026</strong>.</p>
-				<p>Précisez le nombre de personnes, d'enfants et les régimes spéciaux.</p>
-			</section>
-
-			<section class="panel">
-				<h2>Contacts</h2>
+			<Card title="Contacts">
 				<p><strong>Marie :</strong> <a href="tel:+33618885425">06 18 88 54 25</a></p>
 				<p><strong>Robin :</strong> <a href="tel:+33640254609">06 40 25 46 09</a></p>
 				<p>
 					<a href="mailto:mariebreuille@gmail.com">mariebreuille@gmail.com</a><br />
 					<a href="mailto:robin4a4@gmail.com">robin4a4@gmail.com</a>
 				</p>
-			</section>
+			</Card>
 
 			<footer class="footer">
 				<p>Merci de célébrer cette journée avec nous.</p>
@@ -144,8 +175,7 @@
 	}
 
 	.hero-image-wrap {
-		aspect-ratio: 16 / 7;
-		border: 1px solid rgba(61, 61, 61, 0.16);
+		aspect-ratio: 16 / 6;
 		overflow: hidden;
 		background: var(--off-white-dark);
 	}
@@ -223,11 +253,10 @@
 
 	h2 {
 		margin: 0 0 0.8rem;
-		padding-bottom: 0.5rem;
+		padding-bottom: 0;
 		font-size: 1.65rem;
 		font-weight: 500;
 		color: var(--hydrangea);
-		border-bottom: 1px solid rgba(123, 163, 201, 0.45);
 	}
 
 	p {
@@ -245,28 +274,52 @@
 		font-weight: 500;
 	}
 
-	.timeline {
+	.gift-list {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-		gap: 0.75rem;
+		gap: 0.9rem;
+	}
+
+	.shop-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		align-items: start;
+		gap: 0.9rem;
 		margin-top: 0.25rem;
 	}
 
-	.timeline-item {
-		border: 1px solid rgba(123, 163, 201, 0.25);
-		padding: 0.75rem;
+	.shop-card {
+		border: 1px solid rgba(61, 61, 61, 0.12);
+		padding: 1rem;
 		display: grid;
-		gap: 0.1rem;
+		align-content: start;
+		gap: 0.35rem;
+		background: rgba(249, 247, 243, 0.35);
 	}
 
-	.time {
-		font-size: 0.95rem;
-		font-weight: 500;
+	.shop-card h3 {
+		margin: 0 0 0.1rem;
+		font-family: "Cormorant Garamond", serif;
+		font-size: 1.35rem;
 		color: var(--hydrangea);
 	}
 
-	.event {
-		font-size: 0.92rem;
+	.shop-accordion {
+		margin-top: 0.4rem;
+		border-top: 1px solid rgba(61, 61, 61, 0.12);
+		padding-top: 0.45rem;
+	}
+
+	.shop-accordion summary {
+		cursor: pointer;
+		font-weight: 500;
+		color: var(--text);
+	}
+
+	.shop-accordion ul {
+		margin: 0.5rem 0 0 1rem;
+		padding: 0;
+		display: grid;
+		gap: 0.25rem;
 		color: var(--text-light);
 	}
 
@@ -301,5 +354,10 @@
 		.hero-image-wrap {
 			aspect-ratio: 16 / 10;
 		}
+
+		.shop-grid {
+			grid-template-columns: 1fr;
+		}
+
 	}
 </style>

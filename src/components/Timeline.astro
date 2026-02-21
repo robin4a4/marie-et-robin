@@ -1,0 +1,103 @@
+---
+interface TimelineItem {
+	date: string;
+	label: string;
+}
+
+interface Props {
+	items: TimelineItem[];
+	ariaLabel?: string;
+}
+
+const { items = [], ariaLabel = "Frise chronologique des dates importantes" } = Astro.props as Props;
+---
+
+<div class="timeline" aria-label={ariaLabel}>
+	{
+		items.map((item) => (
+			<div class="timeline-node">
+				<span class="timeline-date">{item.date}</span>
+				<span class="timeline-dot" aria-hidden="true"></span>
+				<span class="timeline-label">{item.label}</span>
+			</div>
+		))
+	}
+</div>
+
+<style>
+	.timeline {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		gap: 0;
+		margin-top: 0.5rem;
+		padding: 0.35rem 0.2rem 0.15rem;
+		overflow: visible;
+	}
+
+	.timeline::before {
+		content: "";
+		position: absolute;
+		left: 0.2rem;
+		right: 0.2rem;
+		top: 40px;
+		height: 1px;
+		background: rgba(123, 163, 201, 0.45);
+	}
+
+	.timeline-node {
+		position: relative;
+		flex: 1 1 0;
+		display: grid;
+		grid-template-rows: auto 1rem auto;
+		gap: 0.55rem;
+		text-align: center;
+		padding: 0 0.35rem;
+		min-width: 0;
+	}
+
+	.timeline-date {
+		font-size: 0.82rem;
+		font-weight: 500;
+		color: var(--hydrangea);
+		letter-spacing: 0.02em;
+		text-transform: uppercase;
+		line-height: 1.35;
+	}
+
+	.timeline-dot {
+		width: 0.62rem;
+		height: 0.62rem;
+		border-radius: 999px;
+		background: var(--hydrangea);
+		justify-self: center;
+		align-self: center;
+		box-shadow: 0 0 0 4px rgba(123, 163, 201, 0.16);
+		position: relative;
+		z-index: 1;
+		grid-row: 2;
+		margin-inline: auto;
+	}
+
+	.timeline-label {
+		font-size: 0.92rem;
+		color: var(--text-light);
+		line-height: 1.45;
+		max-width: 22ch;
+		margin: 0 auto;
+	}
+
+	@media (max-width: 768px) {
+		.timeline {
+			justify-content: flex-start;
+			gap: 0.75rem;
+			overflow-x: auto;
+			padding-bottom: 0.35rem;
+		}
+
+		.timeline-node {
+			flex: 0 0 min(230px, 80vw);
+		}
+	}
+</style>
