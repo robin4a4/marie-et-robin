@@ -82,10 +82,11 @@ const timelineItems = [
 					<p>
 						Pour celles et ceux qui le souhaitent,
 						nous avons organisé une liste de mariage dans les boutiques présentées ci-dessous.
-            Il suffit de leur envoyer un mail avec les éléments que vous souhaitez acheter et ils enregistreront votre demande.
+            Il suffit de leur envoyer un mail ou de les appeler avec les éléments que vous souhaitez nous offrir et ils enregistreront votre demande.
 					</p>
 					<p>
-						Une <strong>gagnotte</strong> sera également mise à disposition pendant le mariage.
+						Une urne sera également mise à disposition pendant le mariage.
+            Cela permettra notamment de financer les futurs aménagements de notre appartement ainsi que notre voyage de noces à Belle-Île-en-Mer.
 					</p>
 					<div class="shop-grid">
 						<article class="shop-card">
@@ -95,11 +96,24 @@ const timelineItems = [
 							<p><a href="mailto:boutique.stplacide@degrenne.fr">boutique.stplacide@degrenne.fr</a></p>
 							<details class="shop-accordion">
 								<summary>Voir les éléments de la liste</summary>
+								<p class="shop-subheading">
+									<a href="https://www.degrenne.fr/products/normandy-miroir-colis-ecrin-50-pieces-monobloc-lame-scie-236527" target="_blank" rel="noopener">
+										Colis écrin 50 couverts Normandy Miroir
+									</a>
+								</p>
+								<p class="shop-subheading">
+									<a href="https://www.degrenne.fr/collections/vaisselle-collection-galon-platine" target="_blank" rel="noopener">
+										Collection Galon Platine
+									</a>
+								</p>
 								<ul>
-									<li>Service d'assiettes plates et creuses</li>
-									<li>Set de couverts 24 pièces</li>
-									<li>Verres à eau et verres à vin</li>
-									<li>Plat de service en céramique</li>
+									<li>12 Assiettes</li>
+									<li>12 Assiettes dessert</li>
+									<li>2 Plats ovales</li>
+									<li>2 Plats à tarte</li>
+									<li>12 Assiettes creuses 19 cm</li>
+									<li>2 Saladiers</li>
+									<li>12 Coupelles</li>
 								</ul>
 							</details>
 						</article>
@@ -108,16 +122,19 @@ const timelineItems = [
 							<p>21 Rue Royale, 75008 Paris</p>
 							<p><a href="tel:+33142658184">01 42 65 81 84</a></p>
 							<p>
-								Contact boutique :
 								<a href="mailto:vb.rue-royale@villeroy-boch.com">vb.rue-royale@villeroy-boch.com</a>
 							</p>
 							<details class="shop-accordion">
 								<summary>Voir les éléments de la liste</summary>
+								<p class="shop-subheading">
+									<a href="https://www.villeroy-boch.fr/b/octavie/" target="_blank" rel="noopener">
+										Collection Octavie
+									</a>
+								</p>
 								<ul>
-									<li>Assiettes dessert et assiettes présentation</li>
-									<li>Ménagère de couverts modernes</li>
-									<li>Flûtes et verres de dégustation</li>
-									<li>Vase et pièces décoratives de table</li>
+									<li>14 Verre à vin rouge Octavie</li>
+									<li>14 Verre à mousseux Octavie</li>
+									<li>14 Verre à eau Octavie</li>
 								</ul>
 							</details>
 						</article>
@@ -334,10 +351,42 @@ const timelineItems = [
 		cursor: pointer;
 		font-weight: 500;
 		color: var(--text);
+		list-style: none;
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+	}
+
+	.shop-accordion summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.shop-accordion summary::after {
+		content: "";
+		display: inline-block;
+		width: 0.55rem;
+		height: 0.55rem;
+		border-right: 2px solid var(--text-light);
+		border-bottom: 2px solid var(--text-light);
+		transform: rotate(45deg);
+		transition: transform 0.25s ease;
+		flex-shrink: 0;
+		margin-top: -0.15rem;
+	}
+
+	.shop-accordion[open] summary::after {
+		transform: rotate(-135deg);
+		margin-top: 0.15rem;
+	}
+
+	.shop-subheading {
+		margin: 0.6rem 0 0.15rem;
+		font-weight: 500;
+		font-size: 0.92rem;
 	}
 
 	.shop-accordion ul {
-		margin: 0.5rem 0 0 1rem;
+		margin: 0.35rem 0 0 1rem;
 		padding: 0;
 		display: grid;
 		gap: 0.25rem;
