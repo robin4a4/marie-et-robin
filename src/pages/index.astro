@@ -153,6 +153,35 @@ const timelineItems = [
 				</div>
 			</Card>
 
+      <Card title="Infos pratiques" wide>
+				<div class="faq-list">
+					<details class="faq-item">
+						<summary>Comment se garer à l'église ?</summary>
+						<p>
+							Un petit parking se trouve juste à gauche de l’église Saint-Melaine. Vous pouvez également stationner sur le parking place Lindenfelds situé à 3 minutes à pied.
+						</p>
+					</details>
+					<details class="faq-item">
+						<summary>Que faire entre la cérémonie et le cocktail ?</summary>
+						<p>
+							Après la cérémonie, vous pourrez profiter du charme de Pont-Aven, avec ses ruelles et ses nombreuses galeries d’art.
+						</p>
+					</details>
+					<details class="faq-item">
+						<summary>Comment se garer dans le domaine ?</summary>
+						<p>
+							Un grand parking éclairé sera à votre disposition à l’entrée du domaine.
+						</p>
+					</details>
+          <details class="faq-item">
+            <summary>Est-il possible de camper sur le domaine ?</summary>
+            <p>
+              Oui, un espace gazon est mis à votre disposition à côté du parking pour planter votre tente.
+            </p>
+          </details>
+				</div>
+			</Card>
+
 			<Card title="Contacts">
 				<p><strong>Marie :</strong> <a href="tel:+33618885425">06 18 88 54 25</a></p>
 				<p><strong>Robin :</strong> <a href="tel:+33640254609">06 40 25 46 09</a></p>
@@ -394,6 +423,53 @@ const timelineItems = [
 		margin: 0.6rem 0 0.15rem;
 		font-weight: 500;
 		font-size: 0.92rem;
+	}
+
+	.faq-list {
+		display: grid;
+		gap: 0.55rem;
+	}
+
+	.faq-item {
+		border: 1px solid rgba(61, 61, 61, 0.12);
+		padding: 0.65rem 0.75rem;
+		background: rgba(249, 247, 243, 0.35);
+	}
+
+	.faq-item summary {
+		cursor: pointer;
+		font-weight: 500;
+		color: var(--text);
+		list-style: none;
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+	}
+
+	.faq-item summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.faq-item summary::after {
+		content: "";
+		display: inline-block;
+		width: 0.55rem;
+		height: 0.55rem;
+		border-right: 2px solid var(--text-light);
+		border-bottom: 2px solid var(--text-light);
+		transform: rotate(45deg);
+		transition: transform 0.25s ease;
+		flex-shrink: 0;
+		margin-top: -0.15rem;
+	}
+
+	.faq-item[open] summary::after {
+		transform: rotate(-135deg);
+		margin-top: 0.15rem;
+	}
+
+	.faq-item p {
+		margin-top: 0.5rem;
 	}
 
 	.shop-accordion ul {
