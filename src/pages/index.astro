@@ -70,14 +70,24 @@ const timelineItems = [
 				</p>
 			</Card>
 
-			<Card title="Cérémonie religieuse">
-				<p class="lead">14 h 30 - Église Saint-Melaine</p>
-				<p>Moëlan-sur-Mer</p>
-			</Card>
-
-			<Card title="Réception">
-				<p class="lead">À partir de 17 h 30 - Manoir de Kerangosker</p>
-				<p>Rue du Hénan, Kerangosker, 29930 Pont-Aven</p>
+			<Card wide>
+				<div class="event-overview">
+					<section class="event-column">
+						<h2>Cérémonie religieuse</h2>
+						<p class="lead">14 h 30 - Église Saint-Melaine</p>
+						<p>Moëlan-sur-Mer</p>
+					</section>
+					<section class="event-column">
+						<h2>Réception</h2>
+						<p class="lead">À partir de 17 h 30 - Manoir de Kerangosker</p>
+						<p>Rue du Hénan, Kerangosker, 29930 Pont-Aven</p>
+					</section>
+				</div>
+				<p class="uniform-note">
+					Nous serions très heureux si les militaires d'active ou de réserve portaient leur
+					uniforme, tenue de cérémonie pour la célébration et tenue de soirée pour le cocktail
+					et le dîner.
+				</p>
 			</Card>
 
 			<Card title="Déroulement de la journée" wide>
@@ -177,6 +187,12 @@ const timelineItems = [
             <summary>Est-il possible de camper sur le domaine ?</summary>
             <p>
               Oui, un espace gazon est mis à votre disposition à côté du parking pour planter votre tente.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>Comment puis-je rentrer après la réception ?</summary>
+            <p>
+              Une navette de 7 places sera disponible de 00 h à 4 h pour assurer les retours.
             </p>
           </details>
 				</div>
@@ -351,6 +367,36 @@ const timelineItems = [
 	.lead {
 		color: var(--text);
 		font-weight: 500;
+	}
+
+	.event-overview {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1.2rem;
+	}
+
+	.event-column {
+		text-align: center;
+	}
+
+	.event-column + .event-column {
+		border-left: 1px solid rgba(61, 61, 61, 0.14);
+		padding-left: 1.2rem;
+	}
+
+
+	.uniform-note {
+		max-width: 700px;
+		margin: 1rem 0 0.1rem;
+		margin-left: auto;
+		margin-right: auto;
+		padding-top: 0.9rem;
+		border-top: 1px solid rgba(61, 61, 61, 0.14);
+		font-family: "Cormorant Garamond", serif;
+		font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+		font-style: italic;
+		text-align: center;
+		color: var(--text-light);
 	}
 
 	.gift-list {
@@ -548,6 +594,18 @@ const timelineItems = [
 		.shop-grid {
 			grid-template-columns: 1fr;
 			gap: 0.75rem;
+		}
+
+		.event-overview {
+			grid-template-columns: 1fr;
+			gap: 0.8rem;
+		}
+
+		.event-column + .event-column {
+			border-left: 0;
+			border-top: 1px solid rgba(61, 61, 61, 0.14);
+			padding-left: 0;
+			padding-top: 0.8rem;
 		}
 
 		.shop-card {
